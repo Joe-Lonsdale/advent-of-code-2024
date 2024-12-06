@@ -97,10 +97,21 @@ def increase():
             if map[y][x] == '1':
                 map[y][x] = '2'
 
+def get_all_expanded_loops(x, y, facing):
+    possible_loops += 1
+    if facing == "UP":
+        
+    elif facing == "RIGHT":
+
+    elif facing == "DOWN":
+
+    else:
+
+
 possible_loops = 0
 while pos_x > 0 and pos_x < len(map[0]) and pos_y > 0 and pos_y < len(map):
     if map[pos_y][pos_x] == "4":
-        possible_loops += 1
+        get_all_expanded_loops(pos_x, pos_y, facing)
     map[pos_y][pos_x] = "1"
     print(pos_x, pos_y)
     if facing == "UP":
