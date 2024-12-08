@@ -30,7 +30,6 @@ while pos_x > 0 and pos_x < len(map[0]) and pos_y > 0 and pos_y < len(map):
     # time.sleep(0.1)
     # os.system('cls')
     map[pos_y][pos_x] = "X"
-    print(pos_x, pos_y)
     if facing == "UP":
         if pos_y == 0:
             pos_y -= 1
@@ -83,65 +82,36 @@ for y in range(len(map)):
         if map[y][x] == "^":
             pos_x = x
             pos_y = y
-            map[y][x] = '1'
 
-def increase():
-    for y in range(len(map)):
-        for x in range(len(map[0])):
-            if map[y][x] == '4':
-                map[y][x] = 'X'
-            if map[y][x] == '3':
-                map[y][x] = '4'
-            if map[y][x] == '2':
-                map[y][x] = '3'
-            if map[y][x] == '1':
-                map[y][x] = '2'
+def check_if_loops(obs_x,obs_y):
+    
 
-def get_all_expanded_loops(x, y, facing):
-    possible_loops += 1
-    if facing == "UP":
-        
-    elif facing == "RIGHT":
-
-    elif facing == "DOWN":
-
-    else:
-
-
-possible_loops = 0
 while pos_x > 0 and pos_x < len(map[0]) and pos_y > 0 and pos_y < len(map):
-    if map[pos_y][pos_x] == "4":
-        get_all_expanded_loops(pos_x, pos_y, facing)
-    map[pos_y][pos_x] = "1"
-    print(pos_x, pos_y)
+    map[pos_y][pos_x] = "X"
     if facing == "UP":
         if pos_y == 0:
             pos_y -= 1
         elif map[pos_y - 1][pos_x] == '#':
-            increase()
             facing = "RIGHT"
         else: pos_y -= 1
     elif facing == "RIGHT":
         if pos_x == len(map) - 1:
             pos_x += 1
         elif map[pos_y][pos_x + 1] == '#':
-            increase()
             facing = "DOWN"
         else: pos_x += 1
     elif facing == "DOWN":
         if pos_y == len(map) - 1:
             pos_y += 1
         elif map[pos_y + 1][pos_x] == '#':
-            increase()
             facing = "LEFT"
         else: pos_y += 1
     else:
         if pos_x == 0:
             pos_x -= 1
         elif map[pos_y][pos_x - 1] == '#':
-            increase()
             facing = "UP"
         else: pos_x -= 1
 
+
 print(map)
-print(possible_loops)
